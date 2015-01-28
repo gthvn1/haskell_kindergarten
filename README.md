@@ -5,6 +5,10 @@ Used to store all my tests in haskell
 
 Will contain exerices around Data Learning.
 
+## euler
+
+Store solutions for [euler problems](https://projecteuler.net/)
+
 ## realworldhaskell
 
 In this directory I will put my run exercices found in the
