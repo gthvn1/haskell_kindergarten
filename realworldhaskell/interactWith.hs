@@ -14,3 +14,16 @@ main = do
     where
         -- replace function by your function
         function = id
+
+-- exo chap4/SplitLines
+splitLines :: String -> [String]
+splitLines [] = []
+splitLines cs =
+  let (pre, suff) = break isLineTerminator cs
+  in pre : case suff of
+                 ('\r' : '\n' : rest) -> splitLines rest
+                 ('\r' : rest) -> splitLines rest
+                 ('\n' : rest) -> splitLines rest
+                 _ -> []
+
+isLineTerminator c = c == '\r' || c == '\n'
