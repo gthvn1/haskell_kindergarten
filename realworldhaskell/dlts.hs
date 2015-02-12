@@ -1,5 +1,4 @@
-module FirstWord where
-
+import Data.List (isInfixOf)
 import System.Environment (getArgs)
 
 interactWith :: (String -> String) -> FilePath -> FilePath -> IO ()
@@ -15,17 +14,13 @@ main = do
         _ -> error "Take exactly two parameters"
     where
         -- replace function by your function
-        function = firstWord
+        function = dlts
 
--- exo chap4/
--- Using the command framework from the section called
--- “A simple command line framework”, write a program that
--- prints the first word of each line of its input.
-
-
-firstWord :: String -> String
-firstWord input = unlines $ map (saferHead . words) (lines input)
-  where -- We need to deal with empty line
-    saferHead :: [String] -> String
-    saferHead [] = ""
-    saferHead (x:_) = x
+-- extract macro names that starts with: #define DLT_
+dlts :: String -> String
+dlts s = unlines $ foldr step [] $ lines s
+    where
+        step l ds = if "#define DLT_" `isInfixOf` l
+                    then secondWord l : ds
+                    else ds
+        secondWord = head . tail . words
