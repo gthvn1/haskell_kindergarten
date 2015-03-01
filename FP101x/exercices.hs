@@ -123,3 +123,20 @@ msort xs ys = merge (mergeOrSort xs) (mergeOrSort ys)
             where
                 fstHalf = take (length l `div` 2) l
                 sndHalf = drop (length l `div` 2) l
+
+-- ------------------------------------------------------------------
+-- Chap6 - High Order functions
+
+-- reverse' [1, 2, 3]
+-- foldr (\x -> ++ [x]) [] [1, 2, 3]
+-- foldr (\x -> ++ [x]) [] (1:(2:(3:[])))
+-- ((([] ++ [3]) ++ [2]) ++ [1])
+-- [3, 2, 1]
+reverse' = foldr (\x -> (++ [x])) []
+
+-- map f [1, 2, 3]
+-- foldr ( ) [] f [1, 2, 3]
+-- ((f 1):((f 2):((f 3):[])))
+map' f xs = foldr (\x -> (f x : )) [] xs
+
+filter' f = foldr (\x -> ((if f x then [x] else []) ++)) []
