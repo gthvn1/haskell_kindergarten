@@ -1,4 +1,6 @@
+-- ------------------------------------------------------------------
 -- Chap1
+--
 
 double x = x + x
 quadruple = double . double
@@ -17,8 +19,9 @@ n = a `div` length xs
         a = 10
         xs = [1..5]
 
+-- ------------------------------------------------------------------
 -- Chap3
-
+--
 signum' n | n < 0  = -1
           | n == 0 = 0
           | otherwise = 1
@@ -51,3 +54,25 @@ and' a b = if a == True then if b == True then True else False
 -- False && _ = False
 and'' a b = if a == True then b
                          else False
+
+-- ------------------------------------------------------------------
+-- Chap4 - List comprehensions
+
+factors n = [x | x <- [1..n], n `rem` x == 0]
+prime n = factors n == [1, n]
+primes n = [x | x <- [2..n], prime x]
+
+pairs xs = zip xs (tail xs)
+sorted xs = and [x <= y | (x,y) <- pairs xs]
+
+positions x xs = [i | (i, x') <- zip [1..] xs, x == x']
+
+-- Exercises
+-- pythagorean
+pyths n = [(x, y, z) | x <- [1..n], y <- [1..n], z <- [1..n], x^2 + y^2 == z^2]
+
+-- a number is perfect if it equals the sum of all of its factors excluding the
+-- number itself.
+perfects n = [x | x <- [2..n], x == sum (init (factors x))]
+
+scalar xs ys = [x*y | (x,y) <- zip xs ys]

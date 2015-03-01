@@ -8,4 +8,7 @@ MOOC about Haskell
 * chap2-part3: _Done_
 * chap3-part1: _Done_
 * chap3-part2: _Done_
-* chap4-part1: in progress
+* chap4-part1: _Done_
+* chap4-part2: _Done_
+* chap5-part1:
+* chap5-part2:
