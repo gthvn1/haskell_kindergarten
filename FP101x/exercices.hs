@@ -45,7 +45,7 @@ or' False a = a
 
 -- True && True = True
 -- _ && _ = False
--- with conditianals
+-- with conditionals
 and' a b = if a == True then if b == True then True else False
                         else False
 
@@ -76,3 +76,50 @@ pyths n = [(x, y, z) | x <- [1..n], y <- [1..n], z <- [1..n], x^2 + y^2 == z^2]
 perfects n = [x | x <- [2..n], x == sum (init (factors x))]
 
 scalar xs ys = [x*y | (x,y) <- zip xs ys]
+
+-- ------------------------------------------------------------------
+-- Chap5 - Recursion
+
+fact n = fact' 1 n
+    where fact' acc n | n <= 1    = acc
+                      | otherwise = fact' (acc*n) (n-1)
+
+quicksort [] = []
+quicksort (x:xs) =  quicksort smaller ++ [x] ++ quicksort larger
+    where
+        smaller = [a | a <- xs, a <= x]
+        larger = [b | b <- xs, b > x]
+
+-- Exercices
+
+-- and with recurison
+-- note: and <list>
+and''' [] = True
+and''' (x:xs) = if x == False then False
+                              else and''' xs
+
+concat' [] ys = ys
+concat' (x:xs) ys = x : (concat' xs ys)
+
+replicate' n v | n == 0 = [v]
+               | otherwise = v : (replicate' (n-1) v)
+
+nth [] _ = error "We reached empty list"
+nth (x:xs) 0 = x
+nth (x:xs) n = nth xs (n-1)
+
+elem' a [] = False
+elem' a (x:xs) = if x == a then True else elem' a xs
+
+merge [] ys = ys
+merge xs [] = xs
+merge (x:xs) (y:ys) = if x < y then x : merge xs (y:ys)
+                               else y : merge (x:xs) ys
+
+msort xs ys = merge (mergeOrSort xs) (mergeOrSort ys)
+    where
+        mergeOrSort l | length l <= 1 = l
+                      | otherwise = msort fstHalf sndHalf
+            where
+                fstHalf = take (length l `div` 2) l
+                sndHalf = drop (length l `div` 2) l
