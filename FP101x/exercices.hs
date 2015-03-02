@@ -127,6 +127,9 @@ msort xs ys = merge (mergeOrSort xs) (mergeOrSort ys)
 -- ------------------------------------------------------------------
 -- Chap6 - High Order functions
 
+-- Express [f x| x <- xs, p x] using map and filter
+exo6 f p xs = map f (filter p xs)
+
 -- reverse' [1, 2, 3]
 -- foldr (\x -> ++ [x]) [] [1, 2, 3]
 -- foldr (\x -> ++ [x]) [] (1:(2:(3:[])))
@@ -135,8 +138,11 @@ msort xs ys = merge (mergeOrSort xs) (mergeOrSort ys)
 reverse' = foldr (\x -> (++ [x])) []
 
 -- map f [1, 2, 3]
--- foldr ( ) [] f [1, 2, 3]
--- ((f 1):((f 2):((f 3):[])))
+-- foldr (\x -> ???) [] $ f [1, 2, 3]
+-- (f 1:(f 2:(f 3:[])))
 map' f xs = foldr (\x -> (f x : )) [] xs
 
-filter' f = foldr (\x -> ((if f x then [x] else []) ++)) []
+-- filter f [1, 2, 3, 4]
+filter' p = foldr (\x -> ((if p x then [x] else []) ++)) []
+
+
