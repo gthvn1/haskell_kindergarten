@@ -1,4 +1,7 @@
--- ------------------------------------------------------------------
+-- If we want to hide some definitions from Prelude we can:
+-- import Prelude hiding (||)
+
+-- --------------------------------
 -- Chap1
 --
 
@@ -19,7 +22,7 @@ n = a `div` length xs
         a = 10
         xs = [1..5]
 
--- ------------------------------------------------------------------
+-- --------------------------------
 -- Chap3
 --
 signum' n | n < 0  = -1
@@ -55,7 +58,7 @@ and' a b = if a == True then if b == True then True else False
 and'' a b = if a == True then b
                          else False
 
--- ------------------------------------------------------------------
+-- --------------------------------
 -- Chap4 - List comprehensions
 
 factors n = [x | x <- [1..n], n `rem` x == 0]
@@ -77,7 +80,7 @@ perfects n = [x | x <- [2..n], x == sum (init (factors x))]
 
 scalar xs ys = [x*y | (x,y) <- zip xs ys]
 
--- ------------------------------------------------------------------
+-- --------------------------------
 -- Chap5 - Recursion
 
 fact n = fact' 1 n
@@ -124,7 +127,7 @@ msort xs ys = merge (mergeOrSort xs) (mergeOrSort ys)
                 fstHalf = take (length l `div` 2) l
                 sndHalf = drop (length l `div` 2) l
 
--- ------------------------------------------------------------------
+-- --------------------------------
 -- Chap6 - High Order functions
 
 -- Express [f x| x <- xs, p x] using map and filter
@@ -146,3 +149,36 @@ map' f xs = foldr (\x -> (f x : )) [] xs
 filter' p = foldr (\x -> ((if p x then [x] else []) ++)) []
 
 
+-- --------------------------------
+-- Chap7
+
+type Parser a = String -> [(a, String)]
+
+-- A parser that extracts a single caracter.
+item :: Parser Char
+item = \inp -> case inp of
+                    []     -> []
+                    (x:xs) -> [(x, xs)]
+
+-- Parser that always fails.
+failure :: Parser a
+failure = \inp -> []
+
+-- The parser that always succeeds.
+return' :: a -> Parser a
+return' v = \inp -> [(v, inp)]
+
+(+++) :: Parser a -> Parser a -> Parser a
+p +++ q = \inp -> case p inp of
+                    []  -> q inp
+                    [(v, out)] -> [(v, out)]
+
+
+parse :: Parser a -> String -> [(a, String)]
+parse p inp = p inp
+
+parser1 :: Parser (Char, Char)
+parser1 = do { x <- item;
+               item;
+               y <- item;
+               return' (x, y)}
