@@ -119,13 +119,12 @@ merge xs [] = xs
 merge (x:xs) (y:ys) = if x < y then x : merge xs (y:ys)
                                else y : merge (x:xs) ys
 
-msort xs ys = merge (mergeOrSort xs) (mergeOrSort ys)
-    where
-        mergeOrSort l | length l <= 1 = l
-                      | otherwise = msort fstHalf sndHalf
-            where
-                fstHalf = take (length l `div` 2) l
-                sndHalf = drop (length l `div` 2) l
+-- sort one list
+msort xs | length xs <= 1 = xs
+         | otherwise = merge (msort fstHalf) (msort sndHalf)
+         where
+                fstHalf = take (length xs `div` 2) xs
+                sndHalf = drop (length xs `div` 2) xs
 
 -- --------------------------------
 -- Chap6 - High Order functions
@@ -177,8 +176,8 @@ p +++ q = \inp -> case p inp of
 parse :: Parser a -> String -> [(a, String)]
 parse p inp = p inp
 
-parser1 :: Parser (Char, Char)
-parser1 = do { x <- item;
-               item;
-               y <- item;
-               return' (x, y)}
+-- parser1 :: Parser (Char, Char)
+-- parser1 = do { x <- item;
+--                item;
+--                y <- item;
+--                return' (x, y)}
