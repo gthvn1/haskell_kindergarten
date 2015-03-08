@@ -181,3 +181,6 @@ parse p inp = p inp
 --                item;
 --                y <- item;
 --                return' (x, y)}
+
+chop8 [] = []
+chop8 bits = take 8 bits : chop8 (drop 8 bits)
