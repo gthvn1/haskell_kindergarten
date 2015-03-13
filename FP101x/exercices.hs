@@ -148,39 +148,5 @@ map' f xs = foldr (\x -> (f x : )) [] xs
 filter' p = foldr (\x -> ((if p x then [x] else []) ++)) []
 
 
--- --------------------------------
--- Chap7
-
-type Parser a = String -> [(a, String)]
-
--- A parser that extracts a single caracter.
-item :: Parser Char
-item = \inp -> case inp of
-                    []     -> []
-                    (x:xs) -> [(x, xs)]
-
--- Parser that always fails.
-failure :: Parser a
-failure = \inp -> []
-
--- The parser that always succeeds.
-return' :: a -> Parser a
-return' v = \inp -> [(v, inp)]
-
-(+++) :: Parser a -> Parser a -> Parser a
-p +++ q = \inp -> case p inp of
-                    []  -> q inp
-                    [(v, out)] -> [(v, out)]
-
-
-parse :: Parser a -> String -> [(a, String)]
-parse p inp = p inp
-
--- parser1 :: Parser (Char, Char)
--- parser1 = do { x <- item;
---                item;
---                y <- item;
---                return' (x, y)}
-
 chop8 [] = []
 chop8 bits = take 8 bits : chop8 (drop 8 bits)
