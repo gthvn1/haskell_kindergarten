@@ -35,16 +35,26 @@ parse :: Parser a -> String -> [(a, String)]
 parse (Parser p) inp = p inp
 
 instance Monad Parser where
-  (>>=)  = error "You must implement (>>=)"
+
+  p >>= f  = Parser (\inp -> case parse p inp of
+                       [] -> []
+                       [(v, out)] -> parse (f v) out)
   return = return'
 
 instance MonadPlus Parser where
   mzero = failure
   p `mplus` q = p +++ q
 
--- parser1 :: Parser (Char, Char)
--- parser1 = do { x <- item;
---                item;
---                y <- item;
---                return' (x, y)}
+-- Now the we have a monad we can use do
+
+p :: Parser (Char, Char)
+
+p = item >>= ( \x ->
+    item >>= ( \y ->
+    item >>= ( \z ->
+    return (x,z)) ))
+--p = do x <- item
+--       item
+--       y <- item
+--       return (x, y)
 
