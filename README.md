@@ -16,6 +16,10 @@ Solutions of [exercism.io](http://exercism.io/ problems).
 
 It is some exercices done during an Haskell's MOOC
 
+## H-99
+
+Solutions for Ninety-Nine Haskell problems (H-99)[https://wiki.haskell.org/H-99:_Ninety-Nine_Haskell_Problems]
+
 ## Learn you a Haskell for Great Good!
 
 Solutions found for exercices found in [LYHGG](http://learnyouahaskell.com)
