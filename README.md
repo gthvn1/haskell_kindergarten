@@ -1,4 +1,4 @@
-# haskell kindergarten
+# Haskell kindergarten
 
 Used to store all my tests in haskell. It is not a project, there is a bunch
 of stuff that are not related each other. And there is probably a lot of
