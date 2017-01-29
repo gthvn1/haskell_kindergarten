@@ -2,7 +2,7 @@
 
 Used to store all my tests in haskell. It is not a project, there is a
 bunch of stuff that are not related each other. And there is probably a
-lot of garbage code. So it is really just for testing and playing purpose.
+lot of garbage code. So it is really just for testing and playing purposes.
 
 ## Data Learning
 
@@ -18,11 +18,11 @@ It is some exercices done during an Haskell's MOOC
 
 ## H-99
 
-Solutions for Ninety-Nine Haskell problems [H-99](https://wiki.haskell.org/H-99:_Ninety-Nine_Haskell_Problems).
+Solutions of Ninety-Nine Haskell problems [H-99](https://wiki.haskell.org/H-99:_Ninety-Nine_Haskell_Problems).
 
-## Learn you a Haskell for Great Good!
+## Learn you a Haskell of Great Good!
 
-Solutions found for exercices found in [LYHGG](http://learnyouahaskell.com)
+Solutions found of exercices in [LYHGG](http://learnyouahaskell.com)
 
 ## Project Euler
 
