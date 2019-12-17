@@ -1,8 +1,12 @@
 # Haskell kindergarten
 
-Used to store all my tests in haskell. It is not a project, there is a
+![Haskell Logo](https://www.haskell.org/img/haskell-logo.svg)
+
+My [Haskell](https://www.haskell.org/) playground
+
+Used as a trash to store all my tests in haskell. It is not a project, there is a
 bunch of stuff that are not related each other. And there is probably a
-lot of garbage code. So it is really just for testing and playing purposes.
+lot of garbage code. So it is really just for testing and playing.
 
 ## Data Learning
 
