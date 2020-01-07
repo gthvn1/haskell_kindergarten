@@ -41,3 +41,9 @@ In this directory I will put solutions of exercices found in the
 
 This is an implementation of redo by following
 [Haskell from scratch](https://www.youtube.com/playlist?list=PLxj9UAX4Em-Ij4TKwKvo-SLp-Zbv-hB4B) by Jekor
+
+## words-game
+
+- Directory has been created using **stack**
+- Goal is to generate a grid of words lost in space of caracters and found
+them
