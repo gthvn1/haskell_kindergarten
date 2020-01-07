@@ -1,0 +1,8 @@
+guard :shell, all_on_start: true do
+  watch /.*Lib.hs$/ do
+    puts "\nCompiling words-game..."
+    `stack build && echo "Compiled!"`
+  end
+end
+
+# vim:ft=ruby

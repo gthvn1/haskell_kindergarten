@@ -4,7 +4,7 @@ github:              "gthvn0/words-game"
 license:             BSD3
 author:              "Guillaume"
 maintainer:          "gthvn0@gmail.com"
-copyright:           "playgrounds"
+copyright:           "GPLv3"
 
 extra-source-files:
 - README.md
@@ -12,7 +12,7 @@ extra-source-files:
 
 # Metadata used when publishing your package
 # synopsis:            Short description of your package
-# category:            GPL2.0+
+# category:            playground
 
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
@@ -21,12 +21,13 @@ description:         Please see the README on GitHub at <https://github.com/gthv
 
 dependencies:
 - base >= 4.7 && < 5
+- hspec
 
 library:
   source-dirs: src
 
 executables:
-  words-game-exe:
+  wgame:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
