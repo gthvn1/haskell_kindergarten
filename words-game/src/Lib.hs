@@ -7,7 +7,7 @@ module Lib
     , findWords
     ) where
 
-import Data.List (isInfixOf)
+import Data.List (isInfixOf, transpose)
 import Data.Maybe (catMaybes)
 
 type Grid = [String]
@@ -33,7 +33,10 @@ findWords :: Grid -> [String] -> [String]
 findWords grid words =
   let searchForward = grid
       searchBackward = map reverse grid
-      lines = searchForward ++ searchBackward
+      searchTopDown = transpose grid
+      searchBottomUp = transpose (reverse grid)
+      lines = searchForward ++ searchBackward ++
+              searchTopDown ++ searchBottomUp
   in catMaybes $ map (findWord lines) words
 
 -- A grid used for testing
@@ -42,7 +45,7 @@ flowerGrid = [ "__D________R___"
              , "__H__________S_"
              , "__L____PAVOT__E"
              , "__IRIS____O____"
-             , "__A_U____U__I__"
+             , "__A_U____U__N__"
              , "____G___R___I__"
              , "_______N____M__"
              , "______E_____S__"
