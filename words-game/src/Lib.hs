@@ -39,15 +39,13 @@ shiftGrid (l:ls) = l : (shiftGrid $ map (addUnderscore) ls)
 -- to the one passed as parameter
 findWords :: Grid -> [String] -> [String]
 findWords grid words =
-  let searchForward = grid
-      searchBackward = map reverse grid
-      searchTopDown = transpose grid
-      searchBottomUp = transpose (reverse grid)
-      searchDiag1 = transpose (shiftGrid grid)
-      searchDiag2 = transpose (shiftGrid searchBackward)
-      lines = searchForward ++ searchBackward ++
-              searchTopDown ++ searchBottomUp ++
-              searchDiag1 ++ searchDiag2
+  let forward  = grid
+      backward = map reverse grid
+      topDown  = transpose grid
+      bottomUp = transpose (reverse grid)
+      diag1    = transpose (shiftGrid grid)
+      diag2    = transpose (shiftGrid backward)
+      lines = forward ++ backward ++ topDown ++ bottomUp ++ diag1 ++ diag2
   in catMaybes $ map (findWord lines) words
 
 -- A grid used for testing
