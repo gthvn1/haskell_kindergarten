@@ -4,6 +4,7 @@ module Lib
     , displayGrid
     , findWordInLine
     , findWord
+    , shiftGrid
     , findWords
     ) where
 
@@ -27,6 +28,13 @@ findWord grid word =
   let found = or $ map (findWordInLine word) grid
   in if found then Just word else Nothing
 
+-- Shift the second line by one on the right, the third by
+-- 2 and so on
+shiftGrid :: Grid -> Grid
+shiftGrid [] = []
+shiftGrid (l:ls) = l : (shiftGrid $ map (addUnderscore) ls)
+  where addUnderscore word = '_' : word
+
 -- Gives the list of words that are in the grid according
 -- to the one passed as parameter
 findWords :: Grid -> [String] -> [String]
@@ -35,8 +43,11 @@ findWords grid words =
       searchBackward = map reverse grid
       searchTopDown = transpose grid
       searchBottomUp = transpose (reverse grid)
+      searchDiag1 = transpose (shiftGrid grid)
+      searchDiag2 = transpose (shiftGrid searchBackward)
       lines = searchForward ++ searchBackward ++
-              searchTopDown ++ searchBottomUp
+              searchTopDown ++ searchBottomUp ++
+              searchDiag1 ++ searchDiag2
   in catMaybes $ map (findWord lines) words
 
 -- A grid used for testing
@@ -47,16 +58,17 @@ flowerGrid = [ "__D________R___"
              , "__IRIS____O____"
              , "__A_U____U__N__"
              , "____G___R___I__"
-             , "_______N____M__"
-             , "______E_____S__"
-             , "_____SALIL__A__"
-             , "____O_______J__"
+             , "___E___N____M__"
+             , "__N___E_____S__"
+             , "_E___SALIL__A__"
+             , "T___O_______J__"
              , "___L___________"
              ]
 
 -- List of flower find in the flowerGrid
 flowerNames = [ "ANEMONE"
               , "DAHLIA"
+              , "GENET"
               , "GUI"
               , "IRIS"
               , "JASMIN"
