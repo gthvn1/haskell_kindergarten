@@ -30,7 +30,11 @@ findWord grid word =
 -- Gives the list of words that are in the grid according
 -- to the one passed as parameter
 findWords :: Grid -> [String] -> [String]
-findWords grid words = catMaybes $ map (findWord grid) words
+findWords grid words =
+  let searchForward = grid
+      searchBackward = map reverse grid
+      lines = searchForward ++ searchBackward
+  in catMaybes $ map (findWord lines) words
 
 -- A grid used for testing
 flowerGrid = [ "__D________R___"
