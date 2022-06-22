@@ -94,11 +94,14 @@
 - In a type like *[Char]*, *Char* is a **type parameter**
 - A type that needs a type parameter is called **parametrized type**
 
-## Maybe, Either
+### Maybe, Either
 
-- Maybe is a Type
+- *Maybe* is a Type
 - It has *constructors*:
   - `Nothing` and `Just`
 - We can pattern match constructors
-- Constructors that takes no arguments (`Nothin`, `Bool`, ...) are just constants
+- Constructors that takes no arguments (`Nothing`, `Bool`, ...) are just constants
 - Constructors with arguments (like `Just`) behave like functions.
+- *Either* is a Type
+- It has *constructors*:
+  - `Left` and `Right`
