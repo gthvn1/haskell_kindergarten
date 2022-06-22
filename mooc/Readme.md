@@ -75,3 +75,30 @@
             / \
            1   1
 ```
+
+## Lecture 2
+
+### Recursion
+- Type of recursion where a function just directly calls itself with different arguments
+  is called **tail recursion**.
+- Tail recursion corresponds to loops.
+- This is why tail recursion is often fast: the compiler can generate a loop in machine
+  code when it sees tail recursion.
+
+### Lists
+- Lists are used to store multiple values of the same type
+- operations like: *head, tail, init, take, drop, (++), (!!), reverse, null, length...*
+  - Some operation comes from **Data.List**
+    - `import Data.List`
+- Range syntax: *[1..10]*
+- In a type like *[Char]*, *Char* is a **type parameter**
+- A type that needs a type parameter is called **parametrized type**
+
+## Maybe, Either
+
+- Maybe is a Type
+- It has *constructors*:
+  - `Nothing` and `Just`
+- We can pattern match constructors
+- Constructors that takes no arguments (`Nothin`, `Bool`, ...) are just constants
+- Constructors with arguments (like `Just`) behave like functions.
