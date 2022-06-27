@@ -105,3 +105,7 @@
 - *Either* is a Type
 - It has *constructors*:
   - `Left` and `Right`
+
+## Lecture 3
+
+### Set 3a & 3b done
