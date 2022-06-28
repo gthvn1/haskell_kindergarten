@@ -28,6 +28,10 @@ Solutions of Ninety-Nine Haskell problems [H-99](https://wiki.haskell.org/H-99:_
 
 Solutions found of exercices in [LYHGG](http://learnyouahaskell.com)
 
+## MOOC from University of Helsinki
+
+https://haskell.mooc.fi/
+
 ## Project Euler
 
 Solutions of [euler problems](https://projecteuler.net/)
