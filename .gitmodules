@@ -1,0 +1,3 @@
+[submodule "haskell-mooc"]
+	path = haskell-mooc
+	url = git@github.com:gthvn1/haskell-mooc.git
