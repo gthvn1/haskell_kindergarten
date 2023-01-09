@@ -1,4 +1,4 @@
-# Haskell kindergarten
+# Haskell sandkasten
 
 ![Haskell Logo](https://www.haskell.org/img/haskell-logo.svg)
 
